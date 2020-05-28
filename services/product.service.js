@@ -17,21 +17,13 @@ class ProductService {
     getProduct(productId) {
         const ProductModel = db.getModel('Product');
 
-        return ProductModel.findOne({
-            where: {
-                id: productId
-            }
-        });
+        return ProductModel.findByPk(productId);
     }
 
     updateProduct(productId, product) {
         const ProductModel = db.getModel('Product');
 
-        return ProductModel.update({
-            type: product.type,
-            brand: product.brand,
-            price: product.price
-        }, {
+        return ProductModel.update(product, {
             where: {
                 id: productId
             }
